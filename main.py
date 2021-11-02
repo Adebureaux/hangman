@@ -24,18 +24,22 @@ i = 0
 while i < len:
 	current += "_"
 	i += 1
+current = list(current)
 
 last = 10
 while last > 0:
 	print("Il vous reste", last, "coup(s) a jouer")
 	print(current)
+	print("Tapez une lettre")
 	user_input = "/"
 	while user_input and user_input[0].isalpha() == False:
 		user_input = sys.stdin.readline()
-	user_input = list(user_input)
-	current = list(current)
-	pos = word.find(user_input[0])
-	if pos != -1:
-		current[pos] = user_input[0]
-	print(pos);
+	if user_input:
+		char = user_input[0]
+	else:
+		char = "/"
+	pos = word.find(char)
+	while pos != -1:
+		current[pos] = char
+		pos = word.find(char)
 	last -= 1
